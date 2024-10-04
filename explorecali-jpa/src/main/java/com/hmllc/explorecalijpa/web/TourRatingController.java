@@ -1,13 +1,10 @@
 package com.hmllc.explorecalijpa.web;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,9 +67,4 @@ public class TourRatingController {
 	tourRatingService.deleteTourRatingByTourIdAndCustomerId(tourId, customerId);
     }
 
-    @ExceptionHandler(value = { NoSuchElementException.class, MethodArgumentNotValidException.class })
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String return404(Exception exception) {
-	return exception.getMessage();
-    }
 }
