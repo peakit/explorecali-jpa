@@ -1,6 +1,7 @@
 package com.hmllc.explorecalijpa.business;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
@@ -43,4 +44,8 @@ public class TourService {
 	return tourRepository.findByTourPackageCode(packageName);
     }
 
+    public Tour findById(Integer tourId) {
+	return tourRepository.findById(tourId)
+		.orElseThrow(() -> new NoSuchElementException("No tour with exists with id: " + tourId));
+    }
 }
